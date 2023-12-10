@@ -1,0 +1,16 @@
+{
+    "name": "aatis/file-manager",
+    "type": "library",
+    "description": "File manager of Aatis",
+    "authors": [
+        {
+            "name": "Maxime Batista",
+            "email": "maximebatista.lycee@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aatis\\FileManager\\": "src/"
+        }
+    }
+}
