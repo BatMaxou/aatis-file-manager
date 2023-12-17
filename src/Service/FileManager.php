@@ -83,29 +83,24 @@ class FileManager implements FileManagerInterface
         return $this->delete($source);
     }
 
-    public function open(string $path, string $mode = 'r'): bool
+    public function read(string $path): string
     {
-        return fopen($path, $mode) ? true : false;
-    }
-
-    public function read(string $path, bool $open = false): ?string
-    {
-        if ($open && !$this->open($path)) {
-            throw new FailedToOpenException(sprintf('Failed to open %s', $path));
-        }
-
         $content = file_get_contents($path);
 
-        return $content ? $content : '';
-    }
-
-    public function write(string $path, mixed $data, bool $open = false): bool
-    {
-        if ($open && !$this->open($path)) {
+        if (false === $content) {
             throw new FailedToOpenException(sprintf('Failed to open %s', $path));
         }
 
-        return file_put_contents($path, $data) ? true : false;
+        return $content;
+    }
+
+    public function write(string $path, mixed $data): bool
+    {
+        if (false === file_put_contents($path, $data)) {
+            throw new FailedToOpenException(sprintf('Failed to open %s', $path));
+        }
+
+        return true;
     }
 
     private function isFolder(string $path): bool

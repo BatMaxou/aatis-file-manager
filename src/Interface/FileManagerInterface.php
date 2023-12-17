@@ -35,9 +35,7 @@ interface FileManagerInterface
 
     public function move(string $source, string $destination): bool;
 
-    public function open(string $path, string $mode): bool;
+    public function read(string $path): string;
 
-    public function read(string $path, bool $open): ?string;
-
-    public function write(string $path, mixed $data, bool $open): bool;
+    public function write(string $path, mixed $data): bool;
 }
