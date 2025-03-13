@@ -2,9 +2,9 @@
 
 namespace Aatis\FileManager\Service;
 
-use Aatis\FileManager\Interface\FileManagerInterface;
 use Aatis\FileManager\Exception\DirectoryNotFoundException;
 use Aatis\FileManager\Exception\FailedToOpenException;
+use Aatis\FileManager\Interface\FileManagerInterface;
 
 class FileManager implements FileManagerInterface
 {
