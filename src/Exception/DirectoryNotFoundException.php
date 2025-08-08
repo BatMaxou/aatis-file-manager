@@ -2,6 +2,6 @@
 
 namespace Aatis\FileManager\Exception;
 
-class DirectoryNotFoundException extends FileManagerException
+class DirectoryNotFoundException extends SourceNotFoundException
 {
 }
