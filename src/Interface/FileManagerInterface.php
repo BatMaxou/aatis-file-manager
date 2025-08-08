@@ -6,30 +6,22 @@ use Aatis\FileManager\Exception\DirectoryNotFoundException;
 
 interface FileManagerInterface
 {
-    public function createDirectory(string $path, int $permissions = 0o777): bool;
+    public function exists(string $path): bool;
 
-    public function create(string $path): bool;
+    public function createDirectory(string $path, int $mode = 0755, bool $recursive = false): bool;
+
+    public function createFile(string $path, int $mode = 0644, bool $recursive = false): bool;
 
     public function deleteDirectory(string $directory, bool $recursive = false): bool;
 
-    public function delete(string $path): bool;
+    public function deleteFile(string $path): bool;
 
     /**
      * @return array<string>
      *
      * @throws DirectoryNotFoundException
      */
-    public function getContent(string $directory): array;
-
-    /**
-     * @return array<string>
-     */
-    public function getFolders(string $directory): array;
-
-    /**
-     * @return array<string>
-     */
-    public function getFiles(string $directory, int $sort): array;
+    public function getFolder(string $directory): array;
 
     public function copy(string $source, string $destination): bool;
 
@@ -37,5 +29,7 @@ interface FileManagerInterface
 
     public function read(string $path): string;
 
-    public function write(string $path, mixed $data): bool;
+    public function write(string $path, mixed $data, int $flag = 0): bool;
+
+    public function append(string $path, mixed $data): bool;
 }
